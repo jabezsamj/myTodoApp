@@ -1,0 +1,22 @@
+<h5 class="menubar">
+
+	<b>Manage LendingSetup</b>
+
+
+	<div class="pull-right" style="margin-right: 10px">
+
+
+		<a href="" ng-click="clearWorkSpace();"><i class=" fa fa-close"
+			data-toggle="tooltip" data-placement="bottom" title="Add"></i></a>
+
+	</div>
+
+</h5>
+<div ng-if="showLendingTypeList" class="col-sm-4"
+	ng-include="'templates/Setup/LendingType.html'"
+	ng-controller="LendingTypeCtrl"></div>
+
+<div ng-if="showLendingTypeForm" class="col-sm-4"
+	ng-include="'templates/Setup/LendingType.html'"
+	ng-controller="LendingTypeCtrl"
+	onload="loadLendingTypeForm(lendingTypeEditMode)"></div>

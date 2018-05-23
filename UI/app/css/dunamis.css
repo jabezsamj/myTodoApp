@@ -1,0 +1,49 @@
+/*
+ * It is advised not to edit the smartadmin_production.css
+ * as this will override any changes you make in the 
+ * later versions of this theme. 
+ * 
+ * We advise that you use use this CSS to override 
+ * SmartAdmin styles. 
+ * 
+ * Rename the stylesheet to whatever your liking so it will stay
+ * unique to you with each update of SmartAdmin.
+ */
+
+/*
+ * INDEX
+ * 
+ * - HTML
+ * - BODY
+ * - CUSTOM STYLES
+ */
+html {
+	background-image: url("../img/dunamis/bg.jpg");
+}
+
+body {
+	color: #444444;
+	background-color: #000;
+	background-image: url("../img/dunamis/bg.jpg");
+}
+
+#header {
+	background: #4D4D4D;
+}
+
+aside {
+	background: #264a3d;
+}
+
+.page-footer {
+	background: #264a3d;
+}
+
+#ribbon {
+	background: #f4f7f6;
+	color: #000000;
+}
+
+.minified.fixed-ribbon #ribbon {
+	left: 0px;
+}

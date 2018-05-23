@@ -1,0 +1,167 @@
+<div class="col-lg-12" ng-if="showBookAuthorList"
+	style="margin-bottom: 20px;">
+
+	<h5 class="menubar">
+
+		BookAuthor List
+
+
+
+
+		<div class="pull-right" style="margin-right: 10px">
+
+
+			<a href="" ng-click="setShowAddBookAuthorForm();"><i
+				class=" fa fa-plus" data-toggle="tooltip" data-placement="bottom"
+				title="Add"></i></a> <a href="" ng-click="hideBookAuthorList();"><i
+				class=" fa fa-close" data-toggle="tooltip" data-placement="bottom"
+				title="Add"></i></a>
+
+
+
+
+		</div>
+
+	</h5>
+	<!--
+                    <div class="row" style ="padding-bottom: 5px">
+
+                      <form  class="smart-form">
+                      <fieldset>
+
+                       <div class="row">
+                       <section class="col col-6">
+                         <label class="label">Search: </label>
+                         <label class="input">
+                         <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+                       </section>
+
+                       <section class="col col-6">
+                         <label class="label">Items per page: </label>
+                         <label class="input">
+                         <input type="number" min="1" max="100" class="form-control" ng-model="pageSizeBookAuthor">
+                       </section>
+                     </div>
+                     </fieldset>
+                   </form>
+
+
+                </div>
+-->
+	<table class="table  table-hover"
+		style="margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-bottom: 0px;">
+		<thead>
+			<tr>
+				<th></th>
+				<th><a href=""
+					ng-click="sortBookAuthor('book.title',bookAuthorReverse)">
+						Title <span class="glyphicon sort-icon"
+						ng-show="sortKeyBookAuthor=='book.title'"
+						ng-class="{'glyphicon-chevron-up':bookAuthorReverse,'glyphicon-chevron-down':!bookAuthorReverse}"></span></th>
+				<th><a href=""
+					ng-click="sortBookAuthor('author.author',bookAuthorReverse)">
+						Author <span class="glyphicon sort-icon"
+						ng-show="sortKeyBookAuthor=='author.author'"
+						ng-class="{'glyphicon-chevron-up':bookAuthorReverse,'glyphicon-chevron-down':!bookAuthorReverse}"></span></th>
+				<!-- <th>Image</th> -->
+			</tr>
+		</thead>
+
+		<thead>
+
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				dir-paginate="bookAuthor in bookAuthors| orderBy:sortKeyBookAuthor:bookAuthorReverse | filter:q | itemsPerPage: pageSizeBookAuthor "
+				current-page="currentPageBookAuthor" pagination-id="bookAuthor"
+				ng-class="bookAuthor.id==bookAuthorId?'info' : ''">
+				<td><div class="">
+						<a href="" ng-click="setShowEditBookAuthorForm(bookAuthor.id);"><i
+							class=" glyphicon glyphicon-pencil" data-toggle="tooltip"
+							data-placement="bottom" title="Edit"><i></a>
+					</div></td>
+
+				<td><span once-text="bookAuthor.book.title"></span></td>
+				<td><span once-text="bookAuthor.author.author"></span></td>
+
+				<!--   <td><img src ="{{imgURLBookAuthor}}{{bookAuthor.id}}" style="max-height:120px;max-width=100%;object-fit: contain"  width="100%"></td> -->
+			</tr>
+		</tbody>
+	</table>
+
+	<div style="padding-top: 0px; margin-top: 10px">
+		<dir-pagination-controls boundary-links="true"
+			on-page-change="pageChangeHandler(newPageNumber)"
+			style="margin:0px;padding:0px"
+			template-url="templates/dirPagination.tpl.html"
+			pagination-id="bookAuthor"></dir-pagination-controls>
+	</div>
+
+</div>
+
+<div ng-if="showBookAuthorForm" class="col-lg-12"
+	style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;">
+	<form id="BookAuthorAdd" class="smart-form">
+
+		<h5 class="menubar">
+
+			{{buttonTextBookAuthor}} BookAuthor
+
+
+			<div class="pull-right" style="margin-right: 10px">
+
+
+				<a href="" ng-click="hideBookAuthorEditForm(bookAuthor.id);"><i
+					class=" fa fa-close" data-toggle="tooltip" data-placement="bottom"
+					title="Add"></i></a>
+
+			</div>
+
+		</h5>
+
+
+		<fieldset style="background: transparent;">
+
+
+			<div class="row">
+				<section>
+					<label class="label">Book: </label> <label class="select">
+						<select ng-model="bookAuthor.book.id"
+						ng-options="book.id as (book.title) for book in books">
+							<option></option>
+					</select> <i></i>
+					</label>
+				</section>
+			</div>
+			<div class="row">
+				<section>
+					<label class="label">Author: </label> <label class="select">
+						<select ng-model="bookAuthor.author.id"
+						ng-options="author.id as (author.author) for author in authors">
+							<option></option>
+					</select> <i></i>
+					</label>
+				</section>
+			</div>
+			<!--
+  <div class="row">
+        <section>
+        <label class="label">Image: </label>
+        <label class="input">
+        <input class="btn " type = "file" imagemodel = "myFile"  /></label>
+        </section>
+        </div> -->
+
+		</fieldset>
+
+		<div>
+			<button type="button" class="btn btn-primary"
+				ng-click="saveBookAuthor(bookAuthor);">Save</button>
+			<button type="button" class="btn btn-default"
+				ng-click="hideBookAuthorEditForm(bookAuthor.id);">Close</button>
+		</div>
+	</form>
+</div>
+</div>

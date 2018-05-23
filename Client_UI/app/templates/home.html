@@ -1,0 +1,288 @@
+<div id="content" role="main">
+<div class = "col-lg-1"></div>
+<div class = "col-lg-10">
+
+
+
+
+<!-- Kanban board-->
+<div ng-if="showKanban">
+<h5  class="menubar">
+    Tasks
+
+    <div class="pull-right">
+    <a href="" ng-click="setShowAddTasksForm();" ><i class=" fa fa-plus fa-lg" data-toggle="tooltip" data-placement="bottom" title="Add Tasks" ></i></a>
+    </div>
+</h5>
+
+
+<!--Status: ToDo-->
+<div class = "col-lg-4">
+
+  <h5 class="menubar" style="text-align:center;"">
+     {{statuss[0].status}}
+  </h5>
+    
+ <div>
+      <table class="table table-bordered table-striped  table-hover" style="margin-top:10px;padding-top:10px;padding-bottom:0px;margin-bottom:0px;">
+         <tbody>
+            <tr dir-paginate="statusTodoTask in statusTodoTasks| itemsPerPage: pageSizeStatusToDo " current-page="currentPageStatusToDo" pagination-id="todo">
+                <td><ul class="linkStyle">
+                    <li ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+
+                    <center>
+                      
+                      <a href="" ng-click="setShowEditTaskForm(statusTodoTask);"      style="" class="here" title="View or Edit" > <i ng-show="hoverEdit" class=" fa fa-eye" data-toggle="tooltip" data-placement="right" title="View or Edit" ></i>
+                      {{statusTodoTask.title}}
+                      </a>
+                     
+                      <a ng-show="hoverEdit" class="pull-right" href="" ng-click="changeStatusOnKanban(statusTodoTask, 'next');" style="" class="here"><i class=" fa fa-chevron-circle-right fa-lg" data-toggle="tooltip" data-placement="right" title="Change status" ></i>
+                      </a>
+                    </center>
+
+
+
+                    </li>     
+                    </ul>
+                </td>
+            </tr>
+         </tbody>
+      </table>
+                             
+      <div  style="padding-top:0px;margin-top:10px">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" style="margin:0px;padding:0px" template-url="templates/dirPagination.tpl.html"  pagination-id="todo">
+        </dir-pagination-controls>
+      </div>
+  </div><!-- End .container -->
+
+</div><!-- End Status: ToDo -->
+
+
+
+<!--Status: InProgress-->
+<div class = "col-lg-4">
+
+  <h5  class="menubar" style="text-align:center;"">
+     {{statuss[1].status}}
+  </h5>
+    
+ <div>
+      <table class="table table-bordered table-striped  table-hover" style="margin-top:10px;padding-top:10px;padding-bottom:0px;margin-bottom:0px;">
+         <tbody>
+            <tr dir-paginate="statusInprogressTask in statusInprogressTasks| itemsPerPage: pageSizeStatusInProgress " current-page="currentPageStatusInProgress" pagination-id="inprogress">
+                <td><ul class="linkStyle">
+                    <li ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+
+                      <center>
+                      <a ng-show="hoverEdit" class="pull-left" href="" ng-click="changeStatusOnKanban(statusInprogressTask, 'previous');" style="" class="here"><i class="fa fa-chevron-circle-left fa-lg" data-toggle="tooltip" data-placement="right" title="Change status"></i>
+                      </a>
+                      
+                      <a href="" ng-click="setShowEditTaskForm(statusInprogressTask);" style="" class="here" title="View or Edit"><i ng-show="hoverEdit" class=" fa fa-eye" data-toggle="tooltip" data-placement="right" title="View or Edit" ></i> {{statusInprogressTask.title}} </a>
+                      
+                      <a ng-show="hoverEdit" class="pull-right" href="" ng-click="changeStatusOnKanban(statusInprogressTask, 'next');" style="" class="here"><i class=" fa fa-chevron-circle-right fa-lg" data-toggle="tooltip" data-placement="right" title="Change status" ></i>
+                      </a>
+                      </center>
+
+
+                    </li>     
+                    </ul>
+                </td>
+            </tr>
+         </tbody>
+      </table>
+                             
+      <div  style="padding-top:0px;margin-top:10px">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" style="margin:0px;padding:0px" template-url="templates/dirPagination.tpl.html"  pagination-id="inprogress">
+        </dir-pagination-controls>
+      </div>
+  </div><!-- End .container -->
+
+</div><!-- End Status: InPrgress -->
+
+
+
+
+<!--Status: Completed-->
+<div class = "col-lg-4">
+
+  <h5  class="menubar" style="text-align:center;"">
+     {{statuss[2].status}}
+  </h5>
+    
+ <div>
+      <table class="table table-bordered table-striped  table-hover" style="margin-top:10px;padding-top:10px;padding-bottom:0px;margin-bottom:0px;">
+         <tbody>
+            <tr dir-paginate="statusCompletedTask in statusCompletedTasks| itemsPerPage: pageSizeStatusCompleted " current-page="currentPageStatusCompleted" pagination-id="completed">
+                <td><ul>
+                    <li ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+                      
+                   
+                    <center>
+                      <a ng-show="hoverEdit" class="pull-left" href="" ng-click="changeStatusOnKanban(statusCompletedTask, 'previous');" style="" class="here"><i class="fa fa-chevron-circle-left fa-lg" data-toggle="tooltip" data-placement="right" title="Change status"></i>
+                      </a>
+                        
+                      <a href="" ng-click="setShowEditTaskForm(statusCompletedTask);" style="" class="here" title="View or Edit" ><i ng-show="hoverEdit" class=" fa fa-eye" data-toggle="tooltip" data-placement="right" title="View or Edit" ></i> {{statusCompletedTask.title}} </a>
+                        
+                    </center>
+
+                    </li>     
+                    </ul>
+                </td>
+            </tr>
+         </tbody>
+      </table>
+                             
+      <div  style="padding-top:0px;margin-top:10px">
+        <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" style="margin:0px;padding:0px" template-url="templates/dirPagination.tpl.html"  pagination-id="completed">
+        </dir-pagination-controls>
+      </div>
+  </div><!-- End .container -->
+
+</div><!-- End Status: Completed -->
+
+</div> <!-- Kanban board-->
+
+
+
+<!--Add new Tasks-->
+<div ng-if="showAddTasksForm">
+
+<h5  class="menubar">
+
+    Add New Task
+ 
+    <div class="pull-right">
+
+     
+    <a href="" ng-click="setShowKanban();" ><i class=" fa fa-close fa-lg" data-toggle="tooltip" data-placement="bottom" title="Close form" ></i></a>
+
+    </div>
+
+</h5>
+      <div class="container">
+        <div class="col-sm-1" ></div>
+        <div class="col-sm-6" >
+        <form>
+                <div class="row">
+                <div class="form-group">
+                        <label for="title" class="input-desc">Task Title
+                        <span style="color:red;">*</span></label>
+                        <div class="form-group">
+                        <input type="text"  ng-model="task.title" class="form-control" id="title" name="title" placeholder="Title" maxlength="20" required>
+                        </div>
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="form-group">
+                    <label class="input-desc">Task Description</label>
+                    <textarea class="form-control" rows="5" id="description" ng-model="task.description" placeholder="Description"></textarea>
+                </div>
+                </div>
+                           
+                <div class="row" style="float: right;">
+                    <div>
+                        <input type="submit"   
+                          ng-click="addTask(task)" class="btn btn-custom" value="Add Task" ng-disabled="!task.title" id="submitButton"> 
+                    </div><!-- End .from-group -->
+                </div>
+        </form>
+        </div>
+     </div>
+</div><!-- Add tasks form-->
+
+
+
+
+
+<!--Edit Tasks-->
+<div ng-if="showEditTasksForm">
+
+<h5  class="menubar">
+
+    
+    Task - {{task.title}}
+
+    <div class="pull-right">
+
+     
+    <a href="" ng-click="setShowKanban();" ><i class=" fa fa-close fa-lg" data-toggle="tooltip" data-placement="bottom" title="Close form" ></i></a>
+
+    </div>
+
+</h5>
+      <div class="container">
+        <div class="col-sm-1" ></div>
+        <div class="col-sm-6" >
+        <form>  
+                <div class="row">
+                <a class="pull-right" ng-click="deleteTask(task.id);">
+                    <i class=" fa fa-trash fa-2x" data-toggle="tooltip" data-placement="bottom" title="Delete Task" ></i></a>
+                </div>
+                
+                <div class="row">
+                  &nbsp
+                </div>
+
+                <div class="row">
+                 <div>
+
+                    
+                    <center>
+                      <a ng-if="taskPreviousStatus != null" class="pull-left" ng-click="setStatus(taskPreviousStatus);">
+                        <i class=" fa fa-chevron-circle-left fa-2x" data-toggle="tooltip" data-placement="bottom" title="Change status" ></i>
+                      </a>
+                      <label class="input-desc">
+                      Status : </label> {{task.status.status}}
+                      <a ng-if="taskNextStatus != null" class="pull-right" ng-click="setStatus(taskNextStatus);"><i class=" fa fa-chevron-circle-right fa-2x" data-toggle="tooltip" data-placement="bottom" title="Change status" ></i></a>
+                    </center>
+                    
+                  </div>
+                </div>
+
+                <div class="row">
+                  &nbsp
+                </div>
+                    
+
+
+                <div class="row">
+                <div class="form-group">
+                        <label for="title" class="input-desc">
+                        Task Title
+                        <span style="color:red;">*</span>
+                        </label>
+                        <div class="form-group">
+                        <input type="text"  ng-model="task.title" class="form-control" id="title" name="title" placeholder="Title" maxlength="20" required>
+                        </div>
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="form-group">
+                    <label class="input-desc">
+                    Task Description</label>
+                    <textarea class="form-control" rows="5" id="description" ng-model="task.description" placeholder="Description"></textarea>
+                </div>
+                </div>
+                           
+                <div class="row" style="float: right;">
+                    <div>
+                        <input type="submit"   
+                          ng-click="editTask(task)" class="btn btn-custom" value="Save" ng-disabled="!task.title" id="submitButton"> 
+                    </div><!-- End .from-group -->
+                </div>
+
+        </form>
+        </div>
+     </div>
+
+</div><!-- End Edit tasks form-->
+
+
+
+
+
+
+</div><!--End of col-lg-10-->
+</div><!--End Workspace-->

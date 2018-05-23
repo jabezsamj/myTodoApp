@@ -1,0 +1,168 @@
+<div class="col-lg-12" ng-if="showBookSubCategoryList"
+	style="margin-bottom: 20px;">
+
+	<h5 class="menubar">
+
+		BookSubCategory List
+
+
+
+
+		<div class="pull-right" style="margin-right: 10px">
+
+
+			<a href="" ng-click="setShowAddBookSubCategoryForm();"><i
+				class=" fa fa-plus" data-toggle="tooltip" data-placement="bottom"
+				title="Add"></i></a> <a href="" ng-click="hideBookSubCategoryList();"><i
+				class=" fa fa-close" data-toggle="tooltip" data-placement="bottom"
+				title="Add"></i></a>
+
+
+
+
+		</div>
+
+	</h5>
+	<!--
+                    <div class="row" style ="padding-bottom: 5px">
+
+                      <form  class="smart-form">
+                      <fieldset>
+
+                       <div class="row">
+                       <section class="col col-6">
+                         <label class="label">Search: </label>
+                         <label class="input">
+                         <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+                       </section>
+
+                       <section class="col col-6">
+                         <label class="label">Items per page: </label>
+                         <label class="input">
+                         <input type="number" min="1" max="100" class="form-control" ng-model="pageSizeBookSubCategory">
+                       </section>
+                     </div>
+                     </fieldset>
+                   </form>
+
+
+                </div>
+-->
+	<table class="table  table-hover"
+		style="margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-bottom: 0px;">
+		<thead>
+			<tr>
+				<th></th>
+				<th><a href=""
+					ng-click="sortBookSubCategory('bookSubCategory',bookSubCategoryReverse)">
+						BookSubCategory <span class="glyphicon sort-icon"
+						ng-show="sortKeyBookSubCategory=='bookSubCategory'"
+						ng-class="{'glyphicon-chevron-up':bookSubCategoryReverse,'glyphicon-chevron-down':!bookSubCategoryReverse}"></span></th>
+				<th><a href=""
+					ng-click="sortBookSubCategory('bookCategory.bookCategory',bookSubCategoryReverse)">
+						BookCategory <span class="glyphicon sort-icon"
+						ng-show="sortKeyBookSubCategory=='bookCategory.bookCategory'"
+						ng-class="{'glyphicon-chevron-up':bookSubCategoryReverse,'glyphicon-chevron-down':!bookSubCategoryReverse}"></span></th>
+				<!-- <th>Image</th> -->
+			</tr>
+		</thead>
+
+		<thead>
+
+			</tr>
+		</thead>
+
+		<tbody>
+			<tr
+				dir-paginate="bookSubCategory in bookSubCategorys| orderBy:sortKeyBookSubCategory:bookSubCategoryReverse | filter:q | itemsPerPage: pageSizeBookSubCategory "
+				current-page="currentPageBookSubCategory"
+				pagination-id="bookSubCategory"
+				ng-class="bookSubCategory.id==bookSubCategoryId?'info' : ''">
+				<td><div class="">
+						<a href=""
+							ng-click="setShowEditBookSubCategoryForm(bookSubCategory.id);"><i
+							class=" glyphicon glyphicon-pencil" data-toggle="tooltip"
+							data-placement="bottom" title="Edit"><i></a>
+					</div></td>
+				<td><a href="" ng-click="setBookSubCategory(bookSubCategory)"><span
+						once-text="bookSubCategory.bookSubCategory"></span></a></td>
+				<td><span once-text="bookSubCategory.bookCategory.bookCategory"></span></td>
+
+				<!--   <td><img src ="{{imgURLBookSubCategory}}{{bookSubCategory.id}}" style="max-height:120px;max-width=100%;object-fit: contain"  width="100%"></td> -->
+			</tr>
+		</tbody>
+	</table>
+
+	<div style="padding-top: 0px; margin-top: 10px">
+		<dir-pagination-controls boundary-links="true"
+			on-page-change="pageChangeHandler(newPageNumber)"
+			style="margin:0px;padding:0px"
+			template-url="templates/dirPagination.tpl.html"
+			pagination-id="bookSubCategory"></dir-pagination-controls>
+	</div>
+
+</div>
+
+<div ng-if="showBookSubCategoryForm" class="col-lg-12"
+	style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;">
+	<form id="BookSubCategoryAdd" class="smart-form">
+
+		<h5 class="menubar">
+
+			{{buttonTextBookSubCategory}} BookSubCategory
+
+
+			<div class="pull-right" style="margin-right: 10px">
+
+
+				<a href=""
+					ng-click="hideBookSubCategoryEditForm(bookSubCategory.id);"><i
+					class=" fa fa-close" data-toggle="tooltip" data-placement="bottom"
+					title="Add"></i></a>
+
+			</div>
+
+		</h5>
+
+
+		<fieldset style="background: transparent;">
+
+
+			<div class="row">
+				<section>
+					<label class="label">BookSubCategory: </label> <label class="input">
+						<input type="<textformat>" class="form-control"
+						ng-model="bookSubCategory.bookSubCategory" id="bookSubCategory">
+					</label>
+				</section>
+			</div>
+			<div class="row">
+				<section>
+					<label class="label">BookCategory: </label> <label class="select">
+						<select ng-model="bookSubCategory.bookCategory.id"
+						ng-options="bookCategory.id as (bookCategory.bookCategory) for bookCategory in bookCategorys">
+							<option></option>
+					</select> <i></i>
+					</label>
+				</section>
+			</div>
+			<!--
+  <div class="row">
+        <section>
+        <label class="label">Image: </label>
+        <label class="input">
+        <input class="btn " type = "file" imagemodel = "myFile"  /></label>
+        </section>
+        </div> -->
+
+		</fieldset>
+
+		<div>
+			<button type="button" class="btn btn-primary"
+				ng-click="saveBookSubCategory(bookSubCategory);">Save</button>
+			<button type="button" class="btn btn-default"
+				ng-click="hideBookSubCategoryEditForm(bookSubCategory.id);">Close</button>
+		</div>
+	</form>
+</div>
+</div>

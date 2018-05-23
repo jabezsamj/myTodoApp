@@ -1,0 +1,85 @@
+<html>
+<head>
+  <!-- Favicon and Apple Icons -->
+        <link rel="icon" type="image/png" href="images/icons/favicon.png">
+        
+        <!-- Modernizr -->
+        <script src="js/modernizr.js"></script>
+
+        <!--- jQuery -->
+        <script src="js/jquery.min.js"></script>
+</head>
+
+
+
+<body>
+
+<div>
+
+        <header id="header" role="banner">
+            
+            <nav class="navbar  animated-dropdown " role="navigation">
+                <div class="page-header dark larger larger-desc">
+                <div class="container">
+                    <div class="row">
+                    <div class="col-md-12">
+                            
+                    <!-- End .col-md-6 -->
+                    <!-- End .row -->
+                <!-- End .container -->
+                <!-- End .page-header -->
+
+                                <div class="collapse navbar-collapse collapse-row" id="main-navbar-container">
+                                <div>
+                                <h1>My - ToDo</h1>
+                                    <div style="float: right">
+                                        <ul class="nav navbar-nav">
+                                            <li class="dropdown">
+                                                <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">{{person.firstName}}<span class="angle"></span></a>
+                                                <ul class="dropdown-menu pull-right" role="menu">
+                                                    <li><a href="" ng-click="userLogout();"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a></li> 
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    </div><!-- End .container -->
+
+                            </div><!-- /.navbar-collapse -->
+
+                    </div>
+                    </div> <!--row-->
+                    </div> <!-- div Container-->
+                </div>
+            </nav>
+        </header><!-- End #header -->
+
+    <div ng-if="showHomeWorkSpace" ng-include="'templates/home.html'" ng-controller="HomeWorkSpaceCtrl"></div>
+
+    <script src="js/smoothscroll.js"></script>
+
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.hoverIntent.min.js"></script>
+    <script src="js/jquery.nicescroll.min.js"></script>
+    <script src="js/waypoints.min.js"></script>
+    <script src="js/waypoints-sticky.min.js"></script>
+    <script src="js/jquery.debouncedresize.js"></script>
+    <script src="js/retina.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jflickrfeed.min.js"></script>
+    <script src="js/jquery.selectbox.min.js"></script>
+    <script src="js/twitter/jquery.tweet.min.js"></script>
+    <script src="js/jquery.nouislider.min.js"></script>
+    <script src="js/skrollr.min.js"></script>
+    <script src="js/main.js"></script>
+
+<script src="/bower_components/bootstrap-growl-master/jquery.bootstrap-growl.min.js">    </script>
+
+
+</div>
+
+</body>
+
+</html>
+
+    
+    

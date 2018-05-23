@@ -1,0 +1,118 @@
+<div class="col-lg-12" ng-if="showImageList"
+	style="margin-bottom: 20px;">
+
+	<h5 class="menubar">
+
+		Images
+
+
+
+
+		<div class="pull-right" style="margin-right: 10px">
+
+
+			<a href="" ng-click="setShowAddImageForm();"><i
+				class=" fa fa-plus" data-toggle="tooltip" data-placement="bottom"
+				title="Add"></i></a>
+
+
+
+
+
+
+		</div>
+
+	</h5>
+	<!--
+                    <div class="row" style ="padding-bottom: 5px">
+
+                      <form  class="smart-form">
+                      <fieldset>
+
+                       <div class="row">
+                       <section class="col col-6">
+                         <label class="label">Search: </label>
+                         <label class="input">
+                         <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+                       </section>
+
+                       <section class="col col-6">
+                         <label class="label">Items per page: </label>
+                         <label class="input">
+                         <input type="number" min="1" max="100" class="form-control" ng-model="pageSizeImage">
+                       </section>
+                     </div>
+                     </fieldset>
+                   </form>
+
+
+                </div>
+-->
+	<table class="table   table-hover"
+		style="margin-top: 10px; padding-top: 10px; padding-bottom: 0px; margin-bottom: 0px;">
+
+
+		<tbody>
+			<tr
+				dir-paginate="image in images| orderBy:sortKeyImage:imageReverse | filter:q | itemsPerPage: pageSizeImage "
+				current-page="currentPageImage" pagination-id="image">
+
+
+				<td><img src="{{imageURL+image.id}}" width=100% alt=""
+					style="margin: 0px; border: 0px; padding: 0px"></td>
+			</tr>
+		<tbody>
+	</table>
+
+	<div style="padding-top: 0px; margin-top: 10px">
+		<dir-pagination-controls boundary-links="true"
+			on-page-change="pageChangeHandler(newPageNumber)"
+			style="margin:0px;padding:0px"
+			template-url="templates/dirPagination.tpl.html" pagination-id="image"></dir-pagination-controls>
+	</div>
+
+</div>
+
+<div ng-if="showImageForm" class="col-lg-12"
+	style="padding-top: 10px; padding-bottom: 10px; margin-bottom: 20px;">
+	<form id="ImageAdd" class="smart-form">
+
+		<h5 class="menubarBottomBorder">
+
+			{{buttonTextImage}} Image
+
+
+			<div class="pull-right" style="margin-right: 10px">
+
+
+				<a href="" ng-click="hideImageEditForm(image.id);"><i
+					class=" fa fa-close" data-toggle="tooltip" data-placement="bottom"
+					title="Add"></i></a>
+
+			</div>
+
+		</h5>
+
+
+		<fieldset style="background: transparent;">
+
+
+			<div class="row">
+				<section>
+					<label class="label">Image: </label> <label class="input">
+						<input class="btn " type="file" imagemodel="myFile" />
+				</section>
+			</div>
+
+
+		</fieldset>
+
+		<div>
+			<button type="button" class="btn btn-primary"
+				ng-click="saveImage(image);">Save</button>
+			<button type="button" class="btn btn-default"
+				ng-click="hideImageEditForm(image.id);">Close</button>
+		</div>
+	</form>
+</div>
+</div>

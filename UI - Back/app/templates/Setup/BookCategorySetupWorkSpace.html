@@ -1,0 +1,40 @@
+<h5 class="menubar">
+
+	<b>Manage Book Category</b>
+
+
+	<div class="pull-right" style="margin-right: 10px">
+
+
+		<a href="" ng-click="clearWorkSpace();"><i class=" fa fa-close"
+			data-toggle="tooltip" data-placement="bottom" title="Add"></i></a>
+
+	</div>
+
+</h5>
+<div ng-if="showBookCategoryList" class="col-sm-12"
+	ng-include="'templates/Setup/BookCategory.html'"
+	ng-controller="BookCategoryCtrl"></div>
+
+<div ng-if="showBookCategoryForm" class="col-sm-12"
+	ng-include="'templates/Setup/BookCategory.html'"
+	ng-controller="BookCategoryCtrl"
+	onload="loadBookCategoryForm(bookCategoryEditMode)"></div>
+<div ng-if="showBookSubCategoryList" class="col-sm-12"
+	ng-include="'templates/Setup/BookSubCategory.html'"
+	ng-controller="BookSubCategoryCtrl"></div>
+
+<div ng-if="showBookSubCategoryForm" class="col-sm-12"
+	ng-include="'templates/Setup/BookSubCategory.html'"
+	ng-controller="BookSubCategoryCtrl"
+	onload="loadBookSubCategoryForm(bookSubCategoryEditMode)"></div>
+
+<div ng-if="showBookCategoryLabelsList" class="col-sm-12"
+	ng-include="'templates/Setup/BookCategoryLabels.html'"
+	ng-controller="BookCategoryLabelsCtrl"></div>
+
+<div ng-if="showBookCategoryLabelsForm" class="col-sm-12"
+	ng-include="'templates/Setup/BookCategoryLabels.html'"
+	ng-controller="BookCategoryLabelsCtrl"
+	onload="loadBookCategoryLabelsForm(bookCategoryLabelsEditMode)"></div>
+

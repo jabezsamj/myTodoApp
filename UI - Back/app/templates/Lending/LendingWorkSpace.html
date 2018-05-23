@@ -1,0 +1,16 @@
+<h5 class="menubar">
+
+	<b>Manage Lending</b>
+
+
+	<div class="pull-right" style="margin-right: 10px"></div>
+
+</h5>
+<div ng-if="showLendingList" class="col-sm-12"
+	ng-include="'templates/Lending/Lending.html'"
+	ng-controller="LendingCtrl"></div>
+
+<div ng-if="showLendingForm" class="col-sm-12"
+	ng-include="'templates/Lending/Lending.html'"
+	ng-controller="LendingCtrl" onload="loadLendingForm(lendingEditMode)"></div>
+

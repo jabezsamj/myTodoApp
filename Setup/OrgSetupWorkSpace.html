@@ -1,0 +1,40 @@
+<h5 class="menubar">
+
+	<b>Manage OrgSetup</b>
+
+
+	<div class="pull-right" style="margin-right: 10px">
+
+
+		<a href="" ng-click="clearWorkSpace();"><i class=" fa fa-close"
+			data-toggle="tooltip" data-placement="bottom" title="Add"></i></a>
+
+	</div>
+
+</h5>
+<div ng-if="showFirmList" class="col-sm-4"
+	ng-include="'templates/Setup/Firm.html'" ng-controller="FirmCtrl"></div>
+
+<div ng-if="showFirmForm" class="col-sm-4"
+	ng-include="'templates/Setup/Firm.html'" ng-controller="FirmCtrl"
+	onload="loadFirmForm(firmEditMode)"></div>
+<div ng-if="showDepartmentList" class="col-sm-4"
+	ng-include="'templates/Setup/Department.html'"
+	ng-controller="DepartmentCtrl"></div>
+
+<div ng-if="showDepartmentForm" class="col-sm-4"
+	ng-include="'templates/Setup/Department.html'"
+	ng-controller="DepartmentCtrl"
+	onload="loadDepartmentForm(departmentEditMode)"></div>
+<div ng-if="showLawyerList" class="col-sm-4"
+	ng-include="'templates/Setup/Lawyer.html'" ng-controller="LawyerCtrl"></div>
+
+<div ng-if="showLawyerForm" class="col-sm-4"
+	ng-include="'templates/Setup/Lawyer.html'" ng-controller="LawyerCtrl"
+	onload="loadLawyerForm(lawyerEditMode)"></div>
+<div ng-if="showBranchList" class="col-sm-4"
+	ng-include="'templates/Setup/Branch.html'" ng-controller="BranchCtrl"></div>
+
+<div ng-if="showBranchForm" class="col-sm-4"
+	ng-include="'templates/Setup/Branch.html'" ng-controller="BranchCtrl"
+	onload="loadBranchForm(branchEditMode)"></div>

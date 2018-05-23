@@ -1,0 +1,117 @@
+
+    <div id="content" role="main">
+            <div class="page-header dark banner larger larger-desc">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1>My - ToDo</h1>
+                        </div><!-- End .col-md-6 -->
+                    </div><!-- End .row -->
+                </div><!-- End .container -->
+            </div><!-- End .page-header -->
+            
+            
+            <div class="container">
+               
+                  <div class="col-sm-4"></div>
+     
+                  <div class="col-sm-4" ng-if="showLoginForm">
+                        <h2 class="title-border custom mb40">Login </h2>
+
+                        <form >
+                            
+                            <div class="form-group">
+                                <label for="username" class="input-desc">Username</label>
+                                <input type="text" class="form-control"  ng-model="user.login" placeholder="Email" type=email required>
+                            </div><!-- End .from-group -->
+                          
+                           
+                            <div class="form-group mb10">
+                                <label form="password" class="input-desc">Password</label>
+                                <input  class="form-control" ng-model= "user.password"  placeholder="Password" name="password" type="password" value="" maxlength="30">
+                            </div><!-- End .from-group -->
+                           
+                            <div class="form-group text-right clear-margin helper-group">
+                             
+                            </div><!-- End .form-group -->
+
+                            <div  ng-if="showLoginMessage" style="color: #ff0000;">
+                                    <b>{{loginInfo}}</b>
+                                </div>
+                            
+                            <div class="form-group" style="margin-left: 350px;">
+                                <input type="submit" ng-click="userLogin()" class="btn btn-custom" value="Login">
+                            </div><!-- End .from-group -->
+                            
+                    
+                                
+                                
+             
+                        </form>
+
+                    <a href="" ng-click="setShowRegister();"><b>New User ?</b></a>
+                    <br>
+
+                </div><!-- End .col-->
+
+
+                <div class="col-sm-4" ng-if="showRegForm">
+                        <h2 class="title-border custom mb40">Register an Account</h2>
+                        
+                        <form>
+                            <div class="row">
+                                <div class="col-sm-6 ">
+                                    <div class="form-group">
+                                        <label for="name" class="input-desc">Name <span style="color:red;">*</span></label>
+                                        <input type="text" class="form-control" ng-model="person.firstName" id="name" name="name" placeholder="Your Name" required>
+                                    </div><!-- End .from-group -->
+                                </div><!-- End .col-sm-6 -->
+                                <div class="col-sm-6 ">
+                                    <div class="form-group">
+                                        <label for="lastname" class="input-desc">Last Name</label>
+                                        <input type="text" class="form-control" ng-model="person.lastName" id="lastname" name="lastname" placeholder="Your Lastname">
+                                    </div><!-- End .from-group -->
+                                </div><!-- End .col-sm-6 -->
+                            </div><!-- End .row -->
+                              
+                            <div class="row">
+
+                                <div class="col-sm-12 ">
+                                    <label for="email" class="input-desc">Login credentials <span style="color:red;">*</span></label>
+                                    <div class="form-group">
+                                        <input type="email"  ng-model="user.login" class="form-control" id="email" name="email" placeholder="Email for login" required>
+                                    </div><!-- End .from-group -->
+
+                                    <div class="form-group">
+                                    <input class="form-control" ng-model="user.password" placeholder="Password" name="password" type="password" value="" required>
+                                    </div>
+                                </div>
+                            </div><!-- End .row -->
+
+                            <div class="row" style="float: right;">
+                            <div >
+                                <input type="submit"   
+                                ng-click="userRegister(person, user)" class="btn btn-custom" ng-disabled="!person.firstName || !user.login || !user.password" value="Register" id="submitButton">
+                            </div><!-- End .from-group -->
+
+                            </div>
+
+                        <div ng-if="showRegistrationMessage" style="color: #ff0000;">
+                            <b>{{registrationInfo}}</b>
+                        </div>
+
+                        </form>
+                    <div class="mb50 mb10-xs"></div><!-- space -->
+
+                    <a href="" ng-click="setShowLogin();"><b> <- Back to Login Page</b></a>
+                </div><!-- End reg form -->
+
+            </div><!-- End .container -->
+
+            
+        </div><!-- End #content -->
+
+
+  <script src="/bower_components/bootstrap-growl-master/jquery.bootstrap-growl.min.js">    </script>
+
+

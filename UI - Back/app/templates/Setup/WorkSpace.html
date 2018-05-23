@@ -1,0 +1,23 @@
+
+<div class="row" ng-if="showBookCategorySetupWorkSpace"
+	ng-include="'templates/Setup/BookCategorySetupWorkSpace.html'"
+	ng-controller="BookCategorySetupWorkSpaceCtrl"
+	onload="loadBookCategorySetupWorkSpace();"></div>
+<div class="row" ng-if="showLendingSetupWorkSpace"
+	ng-include="'templates/Setup/LendingSetupWorkSpace.html'"
+	ng-controller="LendingSetupWorkSpaceCtrl"
+	onload="loadLendingSetupWorkSpace();"></div>
+<div class="row" ng-if="showOrgSetupWorkSpace"
+	ng-include="'templates/Setup/OrgSetupWorkSpace.html'"
+	ng-controller="OrgSetupWorkSpaceCtrl" onload="loadOrgSetupWorkSpace();"></div>
+<div class="row" ng-if="showBookSetupWorkSpace"
+	ng-include="'templates/Setup/BookSetupWorkSpace.html'"
+	ng-controller="BookSetupWorkSpaceCtrl"
+	onload="loadBookSetupWorkSpace();"></div>
+<div class="row" ng-if="showMembershipTypeWorkSpace"
+	ng-include="'templates/Setup/MembershipTypeWorkSpace.html'"
+	ng-controller="MembershipTypeWorkSpaceCtrl"
+	onload="loadMembershipTypeWorkSpace();"></div>
+<div class="row" ng-if="showLawyerWorkSpace"
+	ng-include="'templates/Setup/LawyerWorkSpace.html'"
+	ng-controller="LawyerWorkSpaceCtrl" onload="loadLawyerWorkSpace();"></div>
