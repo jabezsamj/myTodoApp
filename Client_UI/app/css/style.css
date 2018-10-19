@@ -6985,7 +6985,7 @@ or the section with padding top more than header's height */
 .page-header.dark h1,
 .page-header.dark h2,
 .page-header.dark h3 {
-	color:#bebebe;
+	color:#FFFFFF;
 	font-size: 20px;
 	display:inline;
 	line-height: 2.5em;

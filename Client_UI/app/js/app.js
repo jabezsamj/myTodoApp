@@ -18,10 +18,8 @@ var myApp = angular.module('myApp', [
 
 
 myApp.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/login', {templateUrl: 'templates/login.html', controller: 'LoginCtrl'});
   $routeProvider.when('/home', {templateUrl: 'templates/homePage.html', controller: 'HomePageCtrl'});
-  $routeProvider.when('/register', {templateUrl: 'templates/register.html', controller: 'LoginCtrl'});
-  $routeProvider.otherwise({redirectTo: '/login'});
+  $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
 
@@ -43,11 +41,6 @@ myApp.config(function($sceDelegateProvider){
     "http://www.youtube.com/embed/**"
   ]);
 })
-
-
-
-
-
 
 
 myApp = angular.module('myApp.controllers', ['ngSanitize']);
@@ -82,6 +75,8 @@ myApp.filter('jsonDate', ['$filter', function ($filter) {
   };
 }]);
 
+
+
 myApp.filter('trusted', ['$sce', function ($sce) {
     return function(url) {
         return $sce.trustAsResourceUrl(url);
@@ -113,8 +108,6 @@ myApp.directive('complexPassword', function() {
     }
   }
 });
-
-
 
 
 

@@ -1,10 +1,10 @@
-myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams', '$cookies', '$sce', 'GridDisplayService',
-   function($scope, $location, $http, $routeParams, $cookies, $sce, GridDisplayService){
+myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams', '$cookies', '$sce', 'ConvertService',
+   function($scope, $location, $http, $routeParams, $cookies, $sce, ConvertService){
 
 
     //Person
-    $scope.person = {};
-    $scope.personId = "";
+    $scope.image = {};
+    $scope.images = {};  
 
     //Workspace Items
       
@@ -18,46 +18,24 @@ myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams',
     $scope.loadHomeWorkSpace = function(){
          $scope.setShowHomeWorkSpace(true);
        }
-
+    
     $scope.loadHomeWorkSpace();
 
 
-    $scope.getPerson = function ()
-        {
-           GridDisplayService.getGridDisplayByTag("CurrentPerson", 0)//replace with Params
-             .then(
-                function( person ) {
-                    if(person!=undefined){
-                        $scope.person = person.content;
-                    }
-                }
-            );
-        }
-
-    $scope.getPerson();
     
 
-    $scope.userLogout = function(){
-      
-      var token = $cookies.get("access_token");
-
-      var req = {
-            method: 'POST',
-            crossOrigin: true,
-            url: BASE_API + "tokens/revoke/" + token
-        }
-
-        $http(req).then(function(statusText){
-          
-           if(statusText.data == 200)
-           {
-              $.bootstrapGrowl("Logged out successfully");
-              $location.url('/login');
-           }
-
-        });
-
+    $scope.uploadImage = function(image){
+        ConvertService.uploadImage(image)
+          .then(
+              function( image ) {
+                  if(image!=undefined){
+                      alert("Image Updated!");
+                  }else{
+                  }
+              }
+          );
     }
+
 
 
 }]);
