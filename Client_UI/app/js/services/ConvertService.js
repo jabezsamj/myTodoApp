@@ -1,22 +1,21 @@
 'use strict';
-var USER_URI1 = "DunamisUser"
-var PERSON_URI = "Person"
-var REGISTRATION = "registration"
-var RESET = "reset"
 
-services.factory('ConvertService', function ($http, $q ) {
+var IMAGE_URI = "Image"
+
+
+services.factory('ConvertService', function ($http, $q, imageFileService ) {
     // Return public API.
     return({
         uploadImage:uploadImage
     });
 
 
-
-
-     function uploadImage( file, image ) {
+    function uploadImage(file, image) {
       image.fileName =file.name;
       image.fileSize = file.size;
       image.fileType = file.type;
+
+      alert(image.fileName);
       var formData = new FormData();
       formData.append('file', file);
       formData.append('image', JSON.stringify(image));
@@ -26,7 +25,7 @@ services.factory('ConvertService', function ($http, $q ) {
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined},
             //headers: {'Content-Type': 'multipart/form-data'},
-            url:  BASE_API + IMAGE_URI + "/Upload" ,
+            url:  BASE_API + IMAGE_URI + "/Convert" ,
             crossDomain:true,
             data:formData
         });
@@ -39,7 +38,6 @@ services.factory('ConvertService', function ($http, $q ) {
 
         return( request.then( handleSuccess, handleError ) );
     }
-
 
 
 

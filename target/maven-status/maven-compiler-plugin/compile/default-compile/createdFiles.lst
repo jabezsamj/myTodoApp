@@ -1,0 +1,12 @@
+com/dbsrcnn/web/rest/ConvertRestController.class
+com/dbsrcnn/persistence/ConvertRepository.class
+com/dbsrcnn/security/OAuth2ServerConfiguration$ResourceServerConfiguration.class
+com/dbsrcnn/security/OAuth2ServerConfiguration.class
+com/dbsrcnn/service/ConvertService.class
+com/dbsrcnn/security/MyCorsFilter.class
+com/dbsrcnn/domain/Convert.class
+com/dbsrcnn/security/WebSecurityConfiguration.class
+com/dbsrcnn/security/OAuth2ServerConfiguration$AuthorizationServerConfiguration.class
+com/dbsrcnn/Application.class
+com/dbsrcnn/service/exception/ServiceException.class
+com/dbsrcnn/service/impl/ConvertServiceImpl.class

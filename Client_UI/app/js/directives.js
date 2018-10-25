@@ -59,7 +59,6 @@ app.directive('alertBox', function() {
 
 myApp.directive('filemodel',  ['$parse', 'fileService', function ($parse,fileService) {
 
-
 return {
         restrict: 'A',
         link: function(scope, element, attrs) {
@@ -71,11 +70,37 @@ return {
                   fileService.pop(i);
                 }
               }
-
                 scope.$apply(function(){
                   if (element[0].files != undefined) {
                     fileService.push(element[0].files[0]);
                     console.log('directive applying with file');
+                  }                            
+              });
+            });
+        }
+    };
+
+}]);
+
+
+
+myApp.directive('imagemodel',  ['$parse', 'imageFileService', function ($parse,imageFileService) {
+
+return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.imagemodel);
+            var modelSetter = model.assign;
+            element.bind('change', function(){
+              if(imageFileService.length>0){
+                for(var i=0;i<imageFileService.length;i++){
+                  imageFileService.pop(i);
+                }
+              }
+
+                scope.$apply(function(){
+                  if (element[0].files != undefined) {
+                    imageFileService.push(element[0].files[0]);
                   }                            });
             });
         }

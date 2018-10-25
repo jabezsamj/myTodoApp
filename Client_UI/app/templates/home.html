@@ -4,16 +4,20 @@
 <div class="container">
     <div class="col-md-4"></div>
     <div class="col-md-4">
-        <form method="post" enctype="multipart/form-data">
-            <input type="file" style = "border: 1px solid #555;" id="files" name="files" multiple="multiple" />
+        <form>
+            <input class="btn" style = "border: 1px solid #555;" type = "file" imagemodel = "myFile"  />
+ 
             <p style="text-align: right; margin-top: 20px;">
-                <input type="submit" value="Upload File" class="btn btn-lg btn-primary" />
+                <input type="submit" value="Upload File" class="btn btn-lg btn-primary" ng-click="uploadImage(imageSrc)"/>
             </p>
+
         </form>
+  
+        
+
+
     </div>
     <div class="col-md-4"></div>
 </div>
-
-
 </div><!--End Workspace-->
 

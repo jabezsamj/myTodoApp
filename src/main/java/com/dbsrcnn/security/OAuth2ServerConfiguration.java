@@ -54,7 +54,8 @@ public class OAuth2ServerConfiguration {
 
 					antMatchers(HttpMethod.GET, "/Project/**").hasAnyRole("USER").//					
 					antMatchers(HttpMethod.PUT, "/Project/**").hasAnyRole("USER").//
-					antMatchers(HttpMethod.POST, "/Project/**").hasAnyRole("USER").and().//
+					antMatchers(HttpMethod.POST, "/Project/**").hasAnyRole("USER").//
+					antMatchers(HttpMethod.POST, "/Image/Convert/**").hasAnyRole("USER").and().//
 					csrf().disable();
 					http.csrf().disable();
 					http.headers().frameOptions().disable();

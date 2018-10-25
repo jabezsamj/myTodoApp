@@ -1,10 +1,11 @@
-myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams', '$cookies', '$sce', 'ConvertService',
-   function($scope, $location, $http, $routeParams, $cookies, $sce, ConvertService){
+myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams', '$cookies', '$sce', 'imageFileService', 'ConvertService',
+   function($scope, $location, $http, $routeParams, $cookies, $sce, imageFileService, ConvertService){
 
 
     //Person
     $scope.image = {};
-    $scope.images = {};  
+    $scope.images = {};
+    $scope.imageSrc = {};
 
     //Workspace Items
       
@@ -21,19 +22,20 @@ myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams',
     
     $scope.loadHomeWorkSpace();
 
+    $scope.uploadImage = function(imageSrc){
 
-    
-
-    $scope.uploadImage = function(image){
-        ConvertService.uploadImage(image)
-          .then(
-              function( image ) {
-                  if(image!=undefined){
-                      alert("Image Updated!");
-                  }else{
+      if (imageFileService.length>0){
+                  var image = {};
+                  ConvertService.uploadImage(imageFileService[0],image)
+                       .then(
+                              function( image ) {
+                                  if(image!=undefined){
+                                       var file = new Blob([image], { type: 'application/png' });
+                                       FileSaver.saveAs(file, 'filename.png');
+                                  }
+                              });
                   }
-              }
-          );
+
     }
 
 

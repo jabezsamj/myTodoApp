@@ -29,10 +29,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.multipart.MultipartFile;
 import java.sql.Blob;
 import java.io.IOException;
-import org.hibernate.Hibernate;
-import org.hibernate.HibernateException;
 import org.springframework.util.FileCopyUtils;
-import org.hibernate.SessionFactory;
+
 
 
 import java.io.IOException;
@@ -47,19 +45,10 @@ import javax.servlet.http.HttpServletResponse;
 @Controller("ConvertRestController")
 public class ConvertRestController {
 
-    @Autowired
-    private ConvertRepository convertRepository;
 
-     
-    
-    @Autowired  
-    SessionFactory sessionFactory;
-    
- 
-
-    @RequestMapping(value="/Image/Convert", method=RequestMethod.POST,headers = "content-type=multipart/*" )
+    @RequestMapping(value="/Image/Convert", method=RequestMethod.POST, headers = "content-type=multipart/*" )
     @ResponseBody
-    public MultipartFile  saveImage( @RequestParam("file") MultipartFile inputfile, @RequestParam("image") String imageStr){
+    public String  saveImage( @RequestParam("file") MultipartFile inputfile, @RequestParam("image") String imageStr){
     	/*System.out.println(imageStr);
         Convert image = new Convert();
         try {
@@ -85,7 +74,9 @@ public class ConvertRestController {
 		}
        
         image = convertService.saveImage(image,1);*/
-        return inputfile;
+    	System.out.println(imageStr);
+    	System.out.println("I am here");
+        return imageStr;
     }
 
 
