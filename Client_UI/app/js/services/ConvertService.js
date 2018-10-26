@@ -14,8 +14,6 @@ services.factory('ConvertService', function ($http, $q, imageFileService ) {
       image.fileName =file.name;
       image.fileSize = file.size;
       image.fileType = file.type;
-
-      alert(image.fileName);
       var formData = new FormData();
       formData.append('file', file);
       formData.append('image', JSON.stringify(image));

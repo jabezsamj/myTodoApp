@@ -30,8 +30,8 @@ myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams',
                        .then(
                               function( image ) {
                                   if(image!=undefined){
-                                       var file = new Blob([image], { type: 'application/png' });
-                                       FileSaver.saveAs(file, 'filename.png');
+                                       var file = new Blob([image], { type: 'application/jpg' });
+                                       saveAs(file, 'filename.jpg');
                                   }
                               });
                   }
