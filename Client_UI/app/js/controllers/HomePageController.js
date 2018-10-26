@@ -4,7 +4,6 @@ myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams',
 
     //Person
     $scope.image = {};
-    $scope.images = {};
     $scope.imageSrc = {};
 
     //Workspace Items
@@ -22,22 +21,18 @@ myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams',
     
     $scope.loadHomeWorkSpace();
 
-    $scope.uploadImage = function(imageSrc){
+    $scope.uploadImage = function(){
 
       if (imageFileService.length>0){
-                  var image = {};
-                  ConvertService.uploadImage(imageFileService[0],image)
-                       .then(
-                              function( image ) {
-                                  if(image!=undefined){
-                                       var file = new Blob([image], { type: 'application/jpg' });
-                                       saveAs(file, 'filename.jpg');
-                                  }
-                              });
-                  }
-
+            var image = {};
+            ConvertService.uploadImage(imageFileService[0],image)
+             .then(
+                    function( image ) {
+                        if(image!=undefined){
+                             var file = new Blob([image], { type: 'application/jpg' });
+                             saveAs(file, 'filename.jpg');
+                        }
+                    });
+            }
     }
-
-
-
 }]);

@@ -38,5 +38,4 @@ services.factory('ConvertService', function ($http, $q, imageFileService ) {
     }
 
 
-
 });

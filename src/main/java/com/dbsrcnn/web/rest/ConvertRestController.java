@@ -28,6 +28,13 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.multipart.MultipartFile;
 import java.sql.Blob;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
+import org.json.simple.JSONObject;
+
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import org.springframework.util.FileCopyUtils;
 
@@ -44,11 +51,13 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller("ConvertRestController")
 public class ConvertRestController {
+	
+
 
 
     @RequestMapping(value="/Image/Convert", method=RequestMethod.POST, headers = "content-type=multipart/*" )
     @ResponseBody
-    public String  saveImage( @RequestParam("file") MultipartFile inputfile, @RequestParam("image") String imageStr){
+    public void  saveImage(HttpServletResponse response, @RequestParam("file") MultipartFile inputfile, @RequestParam("image") String image) throws IOException, ParseException, SQLException{
     	/*System.out.println(imageStr);
         Convert image = new Convert();
         try {
@@ -74,9 +83,45 @@ public class ConvertRestController {
 		}
        
         image = convertService.saveImage(image,1);*/
-    	System.out.println(imageStr);
+    	
+    	
+    	JSONParser parser = new JSONParser(); 
+    	JSONObject jsonObjectOfImage = (JSONObject) parser.parse(image);
+    	
+
     	System.out.println("I am here");
-        return imageStr;
+        
+   
+        
+
+        String fileName = (jsonObjectOfImage.get("fileName")).toString();
+        String fileType = (jsonObjectOfImage.get("fileType")).toString();
+        String fileSize = (jsonObjectOfImage.get("fileSize")).toString();
+        try
+        {
+          //Blob imageBlob = Hibernate.getLobCreator(sessionFactory.openSession()).createBlob(inputfile.getInputStream(), inputfile.getSize());
+           
+          System.out.println(fileName);
+   		  System.out.println(fileType);
+   		  System.out.println(fileSize);
+   		  //System.out.println(imageBlob);
+   		  response.setContentType(fileType);
+   		  response.setHeader("Content-Disposition", String.format("inline; filename=\"" + fileName +"\""));
+   		  response.setContentLength(Integer.parseInt(fileSize));
+          
+   		  byte [] byteArr=inputfile.getBytes();
+   		  InputStream inputStream = new ByteArrayInputStream(byteArr);
+   		  
+   		  
+   		  FileCopyUtils.copy(inputfile.getInputStream(), response.getOutputStream());
+           //imageBlob.free();
+
+        } catch (HibernateException e) {
+             e.printStackTrace();
+        }     
+		
+        
+		
     }
 
 
