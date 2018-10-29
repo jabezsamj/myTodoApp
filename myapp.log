@@ -1900,6 +1900,7 @@ java.lang.ClassCastException: java.lang.Long cannot be cast to java.lang.Integer
 2018-10-26 13:51:46.528  INFO 5252 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
 2018-10-26 13:51:52.728  INFO 5252 --- [main] com.dbsrcnn.Application                  : Started Application in 12.219 seconds (JVM running for 22.966)
 2018-10-26 13:54:02.116  INFO 5252 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+<<<<<<< HEAD
 2018-10-26 19:30:36.694  INFO 19007 --- [main] com.dbsrcnn.Application                  : Starting Application on jabez-OptiPlex-9020 with PID 19007 (/home/jabez/webapp/target/classes started by root in /home/jabez/webapp)
 2018-10-26 19:30:36.696  INFO 19007 --- [main] com.dbsrcnn.Application                  : No active profile set, falling back to default profiles: default
 2018-10-26 19:30:37.992  INFO 19007 --- [main] o.apache.catalina.core.StandardService   : Starting service Tomcat
@@ -3839,3 +3840,5 @@ org.apache.tomcat.util.http.fileupload.FileUploadException: the request was reje
 2018-10-29 16:07:47.384  INFO 978 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.4
 2018-10-29 16:07:47.467  INFO 978 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
 2018-10-29 16:07:49.026  INFO 978 --- [main] com.dbsrcnn.Application                  : Started Application in 3.629 seconds (JVM running for 6.3)
+=======
+>>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154

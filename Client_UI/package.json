@@ -29,7 +29,10 @@
   "dependencies": {
     "FileSaver": "^0.10.0",
     "angular-ui-router": "^1.0.3",
+<<<<<<< HEAD
     "base64-to-image": "^1.0.2",
+=======
+>>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154
     "file-saver": "^2.0.0-rc.4"
   }
 }

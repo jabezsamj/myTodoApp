@@ -28,5 +28,10 @@ services.factory('ConvertService', function ($http, $q, imageFileService) {
         });
         //return( request.then( handleSuccess, handleError ) );
     }
+<<<<<<< HEAD
     
+=======
+
+
+>>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154
 });

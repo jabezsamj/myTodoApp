@@ -22,6 +22,7 @@ myApp.controller('HomePageCtrl', ['$scope', '$location', '$http','$routeParams',
     
     $scope.loadHomeWorkSpace();
 
+<<<<<<< HEAD
 
     /*
     function dataURItoBlob(dataURI) {
@@ -146,4 +147,20 @@ function base64ImageToBlob(str) {
                     });
             }
     }
+=======
+    $scope.uploadImage = function(){
+
+      if (imageFileService.length>0){
+            var image = {};
+            ConvertService.uploadImage(imageFileService[0],image)
+             .then(
+                    function( image ) {
+                        if(image!=undefined){
+                             var file = new Blob([image], { type: 'application/jpg' });
+                             saveAs(file, 'filename.jpg');
+                        }
+                    });
+            }
+    }
+>>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154
 }]);
