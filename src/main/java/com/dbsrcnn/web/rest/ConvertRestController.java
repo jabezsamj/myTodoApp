@@ -4,11 +4,14 @@ import com.dbsrcnn.domain.Convert;
 import com.dbsrcnn.service.ConvertService;
 import com.dbsrcnn.persistence.ConvertRepository;
 
-
-
+import java.util.Base64;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.WebDataBinder;
 import org.springframework.web.bind.annotation.InitBinder;
@@ -28,6 +31,17 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import org.springframework.web.multipart.MultipartFile;
 import java.sql.Blob;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
+import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.IOUtils;
+import org.hibernate.Hibernate;
+import org.hibernate.HibernateException;
+import org.json.simple.JSONObject;
+
+import java.io.ByteArrayInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import org.springframework.util.FileCopyUtils;
 
@@ -35,6 +49,10 @@ import org.springframework.util.FileCopyUtils;
 
 import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.io.InputStream;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -44,11 +62,13 @@ import javax.servlet.http.HttpServletResponse;
 
 @Controller("ConvertRestController")
 public class ConvertRestController {
+	
 
-
+    
+	
     @RequestMapping(value="/Image/Convert", method=RequestMethod.POST, headers = "content-type=multipart/*" )
     @ResponseBody
-    public String  saveImage( @RequestParam("file") MultipartFile inputfile, @RequestParam("image") String imageStr){
+    public void  saveImage(HttpServletResponse  response,  @RequestParam("file") MultipartFile inputfile, @RequestParam("image") String image) throws IOException, ParseException, SQLException{
     	/*System.out.println(imageStr);
         Convert image = new Convert();
         try {
@@ -74,14 +94,36 @@ public class ConvertRestController {
 		}
        
         image = convertService.saveImage(image,1);*/
-    	System.out.println(imageStr);
-    	System.out.println("I am here");
-        return imageStr;
+    	
+    	
+    	JSONParser parser = new JSONParser(); 
+    	JSONObject jsonObjectOfImage = (JSONObject) parser.parse(image);
+    	
+        String fileName = (jsonObjectOfImage.get("fileName")).toString();
+        String fileType = (jsonObjectOfImage.get("fileType")).toString();
+        String fileSize = (jsonObjectOfImage.get("fileSize")).toString();
+        
+
+        System.out.println("In here");
+
+   		  
+      byte[] bytes = inputfile.getBytes();
+      Blob blob = new javax.sql.rowset.serial.SerialBlob(bytes);
+	  response.setContentType(fileType);
+	  response.setHeader("Content-Disposition", String.format("inline; filename=\"" + fileName +"\""));
+	  response.setContentLength(Integer.parseInt(fileSize));
+	  
+	  String filetype = inputfile.getContentType().split("/")[1];
+	  
+
+	          File file = new File("src/main/resources/content.png");
+	          FileOutputStream outputStream = new FileOutputStream(file);
+			  //IOUtils.copyLarge(inputfile.getInputStream(), outputStream);
+	          
+	          //OUtils.copyLarge(blob.getBinaryStream(), response.getOutputStream());
+	      
+	          FileCopyUtils.copy(blob.getBinaryStream(), response.getOutputStream());
+      
     }
-
-
-
-
-
 
 }

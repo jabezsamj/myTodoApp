@@ -22,6 +22,11 @@ myApp.config(['$routeProvider', function($routeProvider) {
   $routeProvider.otherwise({redirectTo: '/home'});
 }]);
 
+myApp.config(['$compileProvider',
+    function ($compileProvider) {
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|ftp|mailto|tel|file|blob):/);
+}]);
+
 
 myApp.factory('dunamisCache', ['$cacheFactory', function($cacheFactory) {
     return $cacheFactory('dunamisCache');

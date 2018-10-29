@@ -14,8 +14,13 @@ function handleError( response ) {
     return( $q.reject( response.data.message ) );
 }
 
+
 function handleSuccess( response ) {
-    return( response.data );
+    
+    //var responseArr = [response.data, response.headers ];
+    //return( responseArr );
+
+    return (response); 
 }
 
 

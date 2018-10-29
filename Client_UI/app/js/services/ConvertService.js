@@ -3,7 +3,7 @@
 var IMAGE_URI = "Image"
 
 
-services.factory('ConvertService', function ($http, $q, imageFileService ) {
+services.factory('ConvertService', function ($http, $q, imageFileService) {
     // Return public API.
     return({
         uploadImage:uploadImage
@@ -14,13 +14,10 @@ services.factory('ConvertService', function ($http, $q, imageFileService ) {
       image.fileName =file.name;
       image.fileSize = file.size;
       image.fileType = file.type;
-
-      alert(image.fileName);
       var formData = new FormData();
       formData.append('file', file);
       formData.append('image', JSON.stringify(image));
         var request = $http({
-
             method: "post",
             transformRequest: angular.identity,
             headers: {'Content-Type': undefined},
@@ -29,16 +26,7 @@ services.factory('ConvertService', function ($http, $q, imageFileService ) {
             crossDomain:true,
             data:formData
         });
-        
-        if(imageFileService.length>0){
-                for(var i=0;i<imageFileService.length;i++){
-                  imageFileService.pop(i);
-                }
-        }
-
-        return( request.then( handleSuccess, handleError ) );
+        //return( request.then( handleSuccess, handleError ) );
     }
-
-
-
+    
 });
