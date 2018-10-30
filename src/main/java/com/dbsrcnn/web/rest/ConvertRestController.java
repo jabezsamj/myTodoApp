@@ -33,21 +33,20 @@ import org.springframework.web.multipart.MultipartFile;
 import java.sql.Blob;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-<<<<<<< HEAD
+
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-=======
->>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154
+
+
 import org.hibernate.Hibernate;
 import org.hibernate.HibernateException;
 import org.json.simple.JSONObject;
 
 import java.io.ByteArrayInputStream;
-<<<<<<< HEAD
+
 import java.io.File;
 import java.io.FileOutputStream;
-=======
->>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154
+
 import java.io.IOException;
 import org.springframework.util.FileCopyUtils;
 
@@ -69,20 +68,15 @@ import javax.servlet.http.HttpServletResponse;
 @Controller("ConvertRestController")
 public class ConvertRestController {
 	
-<<<<<<< HEAD
-=======
 
->>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154
 
     
 	
     @RequestMapping(value="/Image/Convert", method=RequestMethod.POST, headers = "content-type=multipart/*" )
     @ResponseBody
-<<<<<<< HEAD
-    public void  saveImage(HttpServletResponse  response,  @RequestParam("file") MultipartFile inputfile, @RequestParam("image") String image) throws IOException, ParseException, SQLException{
-=======
+
     public void  saveImage(HttpServletResponse response, @RequestParam("file") MultipartFile inputfile, @RequestParam("image") String image) throws IOException, ParseException, SQLException{
->>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154
+
     	/*System.out.println(imageStr);
         Convert image = new Convert();
         try {
@@ -113,7 +107,7 @@ public class ConvertRestController {
     	JSONParser parser = new JSONParser(); 
     	JSONObject jsonObjectOfImage = (JSONObject) parser.parse(image);
     	
-<<<<<<< HEAD
+
         String fileName = (jsonObjectOfImage.get("fileName")).toString();
         String fileType = (jsonObjectOfImage.get("fileType")).toString();
         String fileSize = (jsonObjectOfImage.get("fileSize")).toString();
@@ -139,16 +133,14 @@ public class ConvertRestController {
 	      
 	          FileCopyUtils.copy(blob.getBinaryStream(), response.getOutputStream());
       
-=======
+
 
     	System.out.println("I am here");
         
    
         
 
-        String fileName = (jsonObjectOfImage.get("fileName")).toString();
-        String fileType = (jsonObjectOfImage.get("fileType")).toString();
-        String fileSize = (jsonObjectOfImage.get("fileSize")).toString();
+
         try
         {
           //Blob imageBlob = Hibernate.getLobCreator(sessionFactory.openSession()).createBlob(inputfile.getInputStream(), inputfile.getSize());
@@ -174,7 +166,7 @@ public class ConvertRestController {
 		
         
 		
->>>>>>> 79620d411eb5b762eda56feca9f5ba606cdf2154
+
     }
 
 }
